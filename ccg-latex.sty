@@ -12,7 +12,7 @@
 {\bs\makebox[.2em][r]{\raisebox{0ex}{\bs}}}
 \newcommand{\rds} % right double slash
 {\ensuremath{\fs\makebox[.2em][r]{\raisebox{0ex}{\fs}}}}
-\newcommand{\uds} % right double slash
+\newcommand{\uds} % up double slash
 {\ensuremath{\us\makebox[.2em][r]{\raisebox{0ex}{\us}}}}
 
 
@@ -174,3 +174,10 @@
 \newcommand{\ustarsl}     %  star slash
 {\ensuremath{\uds\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
 
+\newenvironment{ccg}[3]{% ccg examples as an environment, 1: columns 2:data 3: derivations
+	\cgex{#1}{
+		#2\\
+		\cglines{#1}\\
+		#3
+		}
+}{}
