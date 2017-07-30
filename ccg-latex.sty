@@ -1,0 +1,176 @@
+% commands for drawing CCG derivations
+% neither requires nor loads any package.
+% -cem bozsahin, 2017
+
+\newcommand{\cgf}[1]{\mbox{\normalfont\textit{#1}}}     % CG category font
+\newcommand{\lf}[1]{\ensuremath{\colon #1}}     % lf font and typeset
+\newcommand{\so}[1]{\ensuremath{#1^\prime}}     % primed lf objects
+\newcommand{\fs}{\ensuremath{/}}           % /: in any environment
+\newcommand{\bs}{\ensuremath{\backslash}}  % \: in any environment
+\newcommand{\us}{\ensuremath{\mid}}        % |: non-directional slash
+\newcommand{\lds} % left double slash 
+{\bs\makebox[.2em][r]{\raisebox{0ex}{\bs}}}
+\newcommand{\rds} % right double slash
+{\ensuremath{\fs\makebox[.2em][r]{\raisebox{0ex}{\fs}}}}
+\newcommand{\uds} % right double slash
+{\ensuremath{\us\makebox[.2em][r]{\raisebox{0ex}{\us}}}}
+
+
+% combinators
+\newcommand{\combf}[1]{\ensuremath{\mathbf{#1}}} % combinator font
+\newcommand{\combb}{\ensuremath{\combf{B}}}      % Combinator B in any environment
+\newcommand{\combi}{\ensuremath{\combf{I}}}      % Combinator I
+\newcommand{\combk}{\ensuremath{\combf{K}}}      % Combinator K
+\newcommand{\combc}{\ensuremath{\combf{C}}}      % Combinator C
+\newcommand{\combs}{\ensuremath{\combf{S}}}      % Combinator S 
+\newcommand{\combw}{\ensuremath{\combf{W}}}      % Combinator W
+\newcommand{\combd}{\ensuremath{\combf{D}}}      % Combinator D
+\newcommand{\combo}{\ensuremath{\combf{O}}}      % Combinator O
+\newcommand{\combu}{\ensuremath{\combf{U}}}      % Combinator U
+\newcommand{\comba}{\ensuremath{\combf{A}}}      % Combinator A (actually, not a comb)
+\newcommand{\combt}{\ensuremath{\combf{T}}}      % Combinator T (=C*)
+\newcommand{\combcs}{\ensuremath{\combf{C_\star}}}      % Combinator C*
+\newcommand{\combphi}{\ensuremath{\combf{\Phi}}}      % cOMBInator Phi
+\newcommand{\combpsi}{\ensuremath{\combf{\Psi}}}      % Combinator Psi
+\newcommand{\combz}{\ensuremath{\combf{Z}}}
+\newcommand{\combj}{\ensuremath{\combf{J}}}
+\newcommand{\combl}{\ensuremath{\combf{L}}}  % the lost combinator fz(gw)=B^2CBB.
+\newcommand{\comby}{\ensuremath{\combf{Y}}}
+\newcommand{\combe}{\ensuremath{\combf{E}}}
+\newcommand{\combx}{\ensuremath{\combf{X}}}
+\newcommand{\combsprime}{\ensuremath{\combf{\combs^{\prime\prime}}}}
+\newcommand{\combsprimex}{\ensuremath{\combf{\combs_{\times}^{\prime\prime}}}}
+
+% ccg rule names 
+\newcommand{\cgfa}{\mbox{\ensuremath{>}}}   % CCG rule names in derivations
+\newcommand{\cgba}{\mbox{\ensuremath{<}}}   % eg, this is backward appl A<
+\newcommand{\cgtr}{\mbox{\ensuremath{\combt}}}
+\newcommand{\cgftr}{\mbox{\ensuremath{>\!\combt}}}
+\newcommand{\cgbtr}{\mbox{\ensuremath{<\!\combt}}}
+\newcommand{\cgdcomp}{\mbox{\ensuremath{<<}}} % decomposition
+\newcommand{\cgdcompf}{\mbox{\ensuremath{>>}}} % fwd decomposition
+\newcommand{\cgbxp}{\mbox{\ensuremath{<\!\!\combt_\times}}} % contraposition
+\newcommand{\cgfxp}{\mbox{\ensuremath{>\!\!\combt_\times}}}
+\newcommand{\cgfc}{\mbox{\ensuremath{>\!\combb}}}   % forward composition
+\newcommand{\cgbc}{\mbox{\ensuremath{<\!\combb}}}
+\newcommand{\cgfx}{\mbox{\ensuremath{>\!\combb_\times}}}    % forward crossing comp Bx>
+\newcommand{\cgfxx}{\mbox{\ensuremath{>\!\combb_\times^2}}} % this is Bx^2
+\newcommand{\cgbxx}{\mbox{\ensuremath{<\!\combb_\times^2}}} % this is Bx^2
+\newcommand{\cgbdx}{\mbox{\ensuremath{<\!\combd_\times}}} % this is Dx
+\newcommand{\cgfdx}{\mbox{\ensuremath{>\!\!\combd_\times}}} % this is Dx
+\newcommand{\cgbd}{\mbox{\ensuremath{<\!\combd}}} % 
+\newcommand{\cgfd}{\mbox{\ensuremath{>\!\combd}}} % 
+\newcommand{\cgfo}{\mbox{\ensuremath{>\!\combo}}} % 
+\newcommand{\cgbo}{\mbox{\ensuremath{<\!\combo}}} % 
+\newcommand{\cgofx}{\mbox{\ensuremath{>\!\combo_\times}}} % 
+\newcommand{\cgobx}{\mbox{\ensuremath{<\!\combo_\times}}} %
+\newcommand{\cgbu}{\mbox{\ensuremath{<\!\combu}}}
+\newcommand{\cgboo}{\mbox{\ensuremath{<\!\combo^2}}} % 
+\newcommand{\cgbdd}{\mbox{\ensuremath{<\!\combd^2}}} % this is <D^2  
+\newcommand{\cgbcc}{\mbox{\ensuremath{<\!\combb^2}}} % this is Bx^2 
+\newcommand{\cgfcc}{\mbox{\ensuremath{>\!\combb^2}}} % this is Bx^2 
+\newcommand{\cgbx}{\mbox{\ensuremath{<\!\combb_\times}}}
+\newcommand{\cgsbx}{\mbox{\ensuremath{<\!\combs_\times}}}  % <Sx
+\newcommand{\cgsfx}{\mbox{\ensuremath{>\!\combs_\times}}}
+\newcommand{\cgsbxx}{\mbox{\ensuremath{<\!\combs_\times^2}}}
+\newcommand{\cgsfxx}{\mbox{\ensuremath{>\!\combs_\times^2}}}
+\newcommand{\cgsb}{\mbox{\ensuremath{<\!\combs}}}
+\newcommand{\cgsf}{\mbox{\ensuremath{>\!\combs}}}
+\newcommand{\cgsprimef}{\mbox{\ensuremath{>\!\combs^{\prime\prime}}}}
+\newcommand{\cgsprimeb}{\mbox{\ensuremath{<\!\combs^{\prime\prime}}}}
+\newcommand{\cgsprimefx}{\mbox{\ensuremath{>\!\combs^{\prime\prime}_\times}}}
+\newcommand{\cgsprimebx}{\mbox{\ensuremath{<\!\combs^{\prime\prime}_\times}}}
+
+% a CCG syntactic category with features (subscripts, superscripts, exponents)
+\newcommand{\cgs}[2]{\ensuremath{\mbox{\cgf{#1}}_{
+  \mbox{\normalfont\textrm{\scriptsize #2}}}}}% subscripted CG cat, eg NPnom
+\newcommand{\cgss}[3]{\ensuremath{\cgf{#1}_{\mbox{\normalfont\textrm{\scriptsize #2}}}^{#3}}}% sub+sup CG cat, eg NPnom^r
+\newcommand{\cgexp}[3]{\ensuremath{\cgf{#1}_{\mbox{\normalfont\textrm{\scriptsize #2}}}^{\mbox{\cgf{#3}}}}}
+% exponent types of Jacobson
+
+% CCG derivation lines
+\newcommand{\mc}[2]                     % centered multicolumn, 
+  {\multicolumn{#1}{c}{#2}}             % #1 = no. of columns, #2 = body.
+\newcommand{\cgex}[2]                        % CCG derivations, \cgex{}{} 
+  {\renewcommand{\arraystretch}{0.5}
+  \begin{tabular}[t]{@{}*{#1}{c@{\ }}}       % #1 = no. of columns, #2 = body
+     #2
+  \end{tabular}}
+
+\newcounter{cgcols}
+
+\makeatletter
+  \newcommand*{\xwhilenum}[1]{\@whilesw{\ifnum #1}\fi }
+\makeatother
+
+% nice column repeat, cannibalised from jfbu in stackexchange
+% this is one way to avoid one continuous line of \cline
+% use this if there are multiple columns, or \cgul if there is only one
+\newcommand{\cglines}[1]{
+	\setcounter{cgcols}{#1}
+	\xwhilenum{\value{cgcols}>1 }
+	{
+		\addtocounter{cgcols}{-1}
+		\hrulefill
+		&
+	}
+	\hrulefill
+}
+	
+
+\newcommand{\cgline}[2]                 % writing a CG line. 2 arguments
+ {\mc{#1}{\hrulefill \raisebox{-.30ex}{\tiny #2}}}% #1=# col #2=rule type 
+\newcommand{\cgul}{\cgline{1}{}}        % used for drawing lines 
+\newcommand{\cgres}[2]                  % CG result #1=#0f columns #2=result
+    {\mc{#1}{\cgf{#2}}}
+\newcommand{\mgline}[2]                 % writing a monadic CG line. 2 arguments
+ {\mc{#1}{\raisebox{-.30ex}{\tiny #2\,}\hrulefill}}
+\newcommand{\cgdotline}[2]              % writing a dotted CG line. 2 arguments
+ {\mc{#1}{\dotfill \raisebox{-.30ex}{\tiny #2}}}% #1=# col #2=rule type 
+\newcommand{\badline}[2]                % showing bad derivations
+ {\mc{#1}{\hrulefill\raisebox{-1ex}{***}\hrulefill
+\raisebox{-.30ex}{\tiny #2}}}      % #1=# of col #2=what fail
+\newcommand{\mgbadline}[2]                % showing bad derivations
+ {\mc{#1}{\raisebox{-.30ex}{\tiny #2}\hrulefill\raisebox{-1ex}{***}\hrulefill
+\raisebox{-.30ex}{\tiny $>$}}}      % #1=# of col #2 =what fails
+
+% Baldridge modal slashes
+\newcommand{\fxs}        %forward crossing slash
+{\ensuremath{\fs\!\makebox[.25em][r]{\raisebox{-3pt}{\tiny$\times$}}}}
+\newcommand{\bxs}        % backward crossing slash
+{\ensuremath{\bs\!\makebox[.5em][r]{\raisebox{-3pt}{\tiny$\times$}}}}
+\newcommand{\fdots}      %forward dot slash
+{\ensuremath{\fs\makebox[.05em][r]{\raisebox{-2pt}{\scriptsize$\cdot$}}}}
+\newcommand{\bdots}      % backward dot slash
+{\ensuremath{\bs\makebox[.2em][r]{\raisebox{-2pt}{\scriptsize$\cdot$}}}}
+\newcommand{\fds}        %forward diamond slash
+{\ensuremath{\fs\makebox[.1em][r]{\raisebox{-3pt}{\scriptsize$\diamond$}}}}
+\newcommand{\bds}        % backward diamond slash
+{\ensuremath{\bs\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\diamond$}}}}
+\newcommand{\fstars}     %forward star slash
+{\ensuremath{\fs\makebox[.1em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
+\newcommand{\bstars}     % backward star slash
+{\ensuremath{\bs\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
+\newcommand{\ustars}     %  star slash
+{\ensuremath{\us\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
+
+% Double modal slashes --postfixed 'l' for lexical
+\newcommand{\fxsl}        %forward crossing slash
+{\ensuremath{\rds\!\makebox[.25em][r]{\raisebox{-3pt}{\tiny$\times$}}}}
+\newcommand{\bxsl}        % backward crossing slash
+{\ensuremath{\lds\!\makebox[.5em][r]{\raisebox{-3pt}{\tiny$\times$}}}}
+\newcommand{\fdotsl}      %forward dot slash
+{\ensuremath{\rds\makebox[.05em][r]{\raisebox{-2pt}{\scriptsize$\cdot$}}}}
+\newcommand{\bdotsl}      % backward dot slash
+{\ensuremath{\lds\makebox[.2em][r]{\raisebox{-2pt}{\scriptsize$\cdot$}}}}
+\newcommand{\fdsl}        %forward diamond slash
+{\ensuremath{\rds\makebox[.1em][r]{\raisebox{-3pt}{\scriptsize$\diamond$}}}}
+\newcommand{\bdsl}        % backward diamond slash
+{\ensuremath{\lds\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\diamond$}}}}
+\newcommand{\fstarsl}     %forward star slash
+{\ensuremath{\rds\makebox[.1em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
+\newcommand{\bstarsl}     % backward star slash
+{\ensuremath{\lds\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
+\newcommand{\ustarsl}     %  star slash
+{\ensuremath{\uds\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
+
