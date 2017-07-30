@@ -174,6 +174,15 @@
 \newcommand{\ustarsl}     %  star slash
 {\ensuremath{\uds\makebox[.4em][r]{\raisebox{-3pt}{\scriptsize$\star$}}}}
 
+\newenvironment{ccgg}[4]{% glossed ccg examples as an environment, 1: columns 2:data 3: gloss 4: derivations
+	\cgex{#1}{
+		#2\\
+		#3\\
+		\cglines{#1}\\
+		#4
+		}
+}{}
+
 \newenvironment{ccg}[3]{% ccg examples as an environment, 1: columns 2:data 3: derivations
 	\cgex{#1}{
 		#2\\

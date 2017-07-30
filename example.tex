@@ -58,11 +58,11 @@ Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
 
 \noindent Example above using \verb|\begin{ccg}{n}{data}{derivations}\end{ccg}|.
 This environment puts in the first lines itself. Based on \verb|\cgex|.
-Check the \verb|.tex| file.\vfill
+No gloss line on top.\vfill
 
 {\footnotesize
 Mary 
-\begin{ccg}{6}{musn't & have & been & being & arrest & -ed}
+\begin{ccg}{6}{musn't & have & been & being & arrest & -ed} 
   {\cgf{(\cgs{S}{pres}\bs NP)\fdsl\cgs{VP}{1sg-pl}}
   & \cgf{\cgs{VP}{1sg-pl}\fdsl\cgs{VP}{en}}
    &\cgf{\cgs{VP}{en,ing}\fdsl\cgs{VP}{ing}}
@@ -82,10 +82,14 @@ Mary
 }\vfill
 \newpage
 
-Another example, to show glossing in the end:\medskip
+Another example, to show glossing in the beginning and the end. 
 
-\begin{ccg}{3}{ver-dir & -t & -ti.}{
-give{-caus} & {-caus} & {-past}\\
+It uses
+\verb|\begin{ccgg}{n}{data}{gloss}{derivations}\end{ccgg}|.
+\medskip
+
+\begin{ccgg}{3}{ver-dir & -t & -ti.}{give{-caus} & {-caus} & {-past}}
+{
 \cgf{\cgs{VP}{inf}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}
 & \cgf{(S\bs\cgs{NP}{nom}\bs\cgs{NP}{case})\lds\cgs{VP}{inf}}\\
 \lf{\lambda x\lambda y\lambda z.\so{give}yxz} & \lf{\lambda p\lambda x\lambda y.\so{cause}(px)y}\\
@@ -93,7 +97,7 @@ give{-caus} & {-caus} & {-past}\\
 \cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.\so{cause}(\so{cause}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
 \mc{3}{`made to let give', from Turkish}
 }
-\end{ccg}
+\end{ccgg}
 
 
 \end{document}
