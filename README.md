@@ -19,11 +19,15 @@ Basic commands other than above:
 
 <code>\combx</code> typesets the combinator x in bold Curry and Feys notation.
 
+<code>\cgs{..}{..}</code> typesets a subscripted category.
+
 <code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc.
 
 <code>\cgres{n}{..}</code> typesets the material in .. across n columns.
 
 <code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
+
+<code>\badline{n}{rulename}</code> typesets a line spanning n columns with <code>***</code> in between, with rule name.
 
 <code>\fstars</code> is a forward slash with star modality, i.e. <code>/*</code>. 
 
