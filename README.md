@@ -13,7 +13,7 @@ and <code>ders</code> is the \\ \\-separated lines of at most that many columns.
 
 Basic commands other than above:
 
-<code>\cat{..}</code> typesets the syntactic category.
+<code>\cat{..}</code> typesets the syntactic category. It is an alias of <code>\cgf{..}</code>.
 
 <code>\lf{..}</code> typesets the logical form.
 
