@@ -6,7 +6,7 @@
 \begin{document}
 {\large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\vfill
 
-Examples with the \verb|\cgex{n}{..}| command:\vfill
+Examples with the \verb|\cgex{n}{derivations}| command:\vfill
 
 \cgex{3}{John & likes & Mary\\
 \cglines{3}\\
@@ -19,14 +19,14 @@ Examples with the \verb|\cgex{n}{..}| command:\vfill
 }\vfill
 
 
-\cgex{3}{John & likes & Mary\\
+\cgex{3}{John & likes & Mary\\ % uses the alias \cat rather than \cgf above--same result
 \cgul & \cgul & \cgul\\  % manually repeats the columns for comparison with \cglines above 
-\cgf{S\fs(S\bs NP)} & \cgf{(S\bs\cgs{NP}{3s})\fs NP} & \cgf{S\bs(S\fs NP)}\\
+\cat{S\fs(S\bs NP)} & \cat{(S\bs\cgs{NP}{3s})\fs NP} & \cat{S\bs(S\fs NP)}\\
 \lf{\lambda p.p\,\so{john}} & \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
 \cgline{2}{\cgfc}\\
 \cgres{2}{S\fs NP \lf{\lambda x.\so{like}x\so{john}}}\\  % note that \cgres is by default in \cgf font
 \cgline{3}{\cgfa}\\
-\cgres{3}{S \lf{\so{like}\so{mary}\so{john}}}
+\cgres{3}{\cat{S} \lf{\so{like}\so{mary}\so{john}}} % using \cat inside \cgres is nae problem
 }\vfill
 
 \cgex{3}{dismiss& -ed\\
@@ -55,6 +55,7 @@ Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
  \cgline{6}{\cgfa}\\
  \cgres{6}{\cgs{S}{pres}\bs NP}
 }}\vfill
+\newpage
 
 \noindent Example above using \verb|\begin{ccg}{n}{data}{derivations}\end{ccg}|.
 This environment puts in the first lines itself. Based on \verb|\cgex|.
@@ -80,13 +81,12 @@ Mary
 }
 \end{ccg}
 }\vfill
-\newpage
 
-Another example, to show glossing in the beginning and the end. 
+\noindent Another example, to show glossing in the beginning and the end. 
 
 It uses
 \verb|\begin{ccgg}{n}{data}{gloss}{derivations}\end{ccgg}|.
-\medskip
+\vfill
 
 \begin{ccgg}{3}{ver-dir & -t & -ti.}{give{-caus} & {-caus} & {-past}}
 {
@@ -97,7 +97,6 @@ It uses
 \cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.\so{cause}(\so{cause}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
 \mc{3}{`made to let give', from Turkish}
 }
-\end{ccgg}
-
+\end{ccgg}\vfill
 
 \end{document}
