@@ -2,7 +2,7 @@ The commands in the <code>ccg-latex.sty</code> file can be used to typeset Combi
 
 Example file shows how.
 
-The basic command is <code>\begin{ccg}..\end{ccg}</ccg>. It typesets
+The basic command is <code>\begin{ccg}..\end{ccg}</code>. It typesets
 derivations without glosses. 
 
 It has a variant, <code>\begin{ccgg}..\end{ccgg}</code>,
