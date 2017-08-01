@@ -25,3 +25,4 @@ Basic commands other than above:
 
 <code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
 
+<code>\fstar</code> is a forward slash with star modality, i.e. <code>/*</code>. For all slashes and modalities.
