@@ -23,5 +23,5 @@ Basic commands other than above:
 
 <code>\cgres{n}{..}</code> typesets the material in .. across n columns.
 
-<code>\cglines{n}</code> typesets n lines separated by blanks, which is common practice after lexical assumptions.
+<code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
 
