@@ -26,4 +26,5 @@ Basic commands other than above:
 <code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
 
 <code>\fstars</code> is a forward slash with star modality, i.e. <code>/*</code>. 
-<code>\bxs</code> is a backward slash with crossing modality, i.e. <code>\x</code>. For all slashes and modalities.
+
+<code>\bxs</code> is a backward slash with crossing modality, i.e. <code>\x</code>. Defined for all slashes and modalities.
