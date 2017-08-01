@@ -15,6 +15,11 @@ Basic commands other than above:
 
 <code>\lf{..}</code> typesets the logical form.
 
-<code>\combx</code> typesets the combinator x in bold Curry and feys notation.
+<code>\combx</code> typesets the combinator x in bold Curry and Feys notation.
 
-<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are </code>\cgfa, \cgba, \cgfc, \cgbc</code> etc.
+<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc.
+
+<code>\cgres{n}{..}</code> typesets the material in .. across n columns.
+
+<code>\cgline{n}</code> typesets n lines separated by blanks, which is common practice after lexical assumptions.
+
