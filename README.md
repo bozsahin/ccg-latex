@@ -27,7 +27,7 @@ Basic commands other than above:
 
 <code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
 
-<code>\badline{n}{rulename}</code> typesets a line spanning n columns with <code>***</code> in between, with rule name.
+<code>\badline{n}{rulename}</code> typesets a line spanning n columns with <code>***</code> in the middle, with rule name at the end.
 
 <code>\fstars</code> is a forward slash with star modality, i.e. <code>/*</code>. 
 
