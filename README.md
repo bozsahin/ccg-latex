@@ -13,6 +13,8 @@ and <code>ders</code> is the \\ \\-separated lines of at most that many columns.
 
 Basic commands other than above:
 
+<code>\cgf{..}</code> typesets the syntactic category.
+
 <code>\cat{..}</code> typesets the syntactic category. It is an alias of <code>\cgf{..}</code>.
 
 <code>\lf{..}</code> typesets the logical form.
@@ -21,7 +23,7 @@ Basic commands other than above:
 
 <code>\cgs{..}{..}</code> typesets a subscripted category.
 
-<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc.
+<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need to be a pre-defined rule name.
 
 <code>\cgres{n}{..}</code> typesets the material in .. across n columns.
 
@@ -29,6 +31,10 @@ Basic commands other than above:
 
 <code>\badline{n}{rulename}</code> typesets a line spanning n columns with <code>***</code> in the middle, with rule name at the end.
 
+<code>\mc{n}{text}</code> typesets the text multi-column centered over n columns; useful for foreign language glossing at the end.
+
 <code>\fstars</code> is a forward slash with star modality, i.e. <code>/*</code>. 
 
-<code>\bxs</code> is a backward slash with crossing modality, i.e. <code>\x</code>. Defined for all slashes and modalities.
+<code>\bxs</code> is a backward slash with crossing modality, i.e. <code>\x</code>. 
+
+Defined for all slashes and modalities.
