@@ -23,7 +23,7 @@ Basic commands other than above:
 
 <code>\cgs{..}{..}</code> typesets a subscripted category.
 
-<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need to be a pre-defined rule name.
+<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need not be a pre-defined rule name.
 
 <code>\cgres{n}{..}</code> typesets the material in .. across n columns.
 
