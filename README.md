@@ -23,7 +23,9 @@ Basic commands other than above:
 
 <code>\cgs{..}{..}</code> typesets a subscripted category.
 
-<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need not be a pre-defined rule name.
+<code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. 
+
+  Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need not be a pre-defined rule name.
 
 <code>\cgres{n}{..}</code> typesets the material in .. across n columns.
 
@@ -31,7 +33,7 @@ Basic commands other than above:
 
 <code>\badline{n}{rulename}</code> typesets a line spanning n columns with <code>***</code> in the middle, with rule name at the end.
 
-<code>\mc{n}{text}</code> typesets the text multi-column centered over n columns; useful for foreign language glossing at the end.
+<code>\mc{n}{text}</code> typesets the text multi-column centered over n columns; useful for foreign language glossing.
 
 <code>\fstars</code> is a forward slash with star modality, i.e. <code>/*</code>. 
 
