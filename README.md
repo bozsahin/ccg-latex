@@ -1,8 +1,8 @@
 # ccg-latex
 
-The commands in the <code>ccg-latex.sty</code> file can be used to typeset Combinatory Categorial Grammar (CCG) derivations.
+The commands in the <code>ccg-latex.sty</code> file can be used to typeset Combinatory Categorial Grammar (CCG) derivations in latex.
 
-Example file shows how.
+The example file shows how.
 
 The basic command is <code>\begin{ccg}..\end{ccg}</code>. It typesets
 derivations without glosses. 
