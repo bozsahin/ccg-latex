@@ -21,6 +21,9 @@ Basic commands other than above:
 
 <code>\lf{..}</code> typesets the logical form.
 
+<code>\fs</code> is the forward slash. We also have <code>\bs, \us, \fss, \bss</code>
+as backslash, undirectional slash, double forward slash and backward, etc.
+
 <code>\combx</code> typesets the combinator x in bold Curry and Feys notation.
 
 <code>\cgs{..}{..}</code> typesets a subscripted category.
