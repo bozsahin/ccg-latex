@@ -24,7 +24,7 @@ Basic commands other than above:
 <code>\fs</code> is the forward slash. We also have <code>\bs, \us, \fss, \bss</code>
 as backslash, undirectional slash, double forward slash and backward, etc.
 
-Some of these slashes have aliases. <code>\fss, \bss, uss</code> are resp. <code>\rds, \lds, uds</code>.
+Some of these slashes have aliases. <code>\fss, \bss, uss</code> are resp. <code>\rds, \lds, \uds</code>.
 
 <code>\combx</code> typesets the combinator x in bold Curry and Feys notation.
 
