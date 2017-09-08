@@ -34,7 +34,8 @@ Some of these slashes have aliases. <code>\fss, \bss, \uss</code> are resp. <cod
 
   Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need not be a pre-defined rule name.
 
-<code>\cgres{n}{..}</code> typesets the material in .. across n columns.
+<code>\cgres{n}{..}</code> typesets the material in .. across n columns. The ... is typeset as \cgf{...}. If there is math mode in it,
+that is typeset in math mode.
 
 <code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
 
