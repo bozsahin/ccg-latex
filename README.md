@@ -19,7 +19,7 @@ Basic commands other than above:
 
 <code>\cat{..}</code> typesets the syntactic category. It is an alias of <code>\cgf{..}</code>.
 
-<code>\lf{..}</code> typesets the logical form.
+<code>\lf{..}</code> typesets the logical form, including the colon and math mode.
 
 <code>\fs</code> is the forward slash. We also have <code>\bs, \us, \fss, \bss</code>
 as backslash, undirectional slash, double forward slash and backward, etc.
