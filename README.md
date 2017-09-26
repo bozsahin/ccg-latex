@@ -4,10 +4,10 @@ The commands in the <code>ccg-latex.sty</code> file can be used to typeset Combi
 
 The example file shows how.
 
-The basic command is <code>\begin{ccg}..\end{ccg}</code>. It typesets
-derivations without glosses. 
+The basic command is <code>\begin{ccg}{n}{data}{ders}\end{ccg}</code>. It typesets
+derivations of data in n columns without glosses. 
 
-It has a variant, <code>\begin{ccgg}..\end{ccgg}</code>,
+It has a variant, <code>\begin{ccgg}{n}{data}{gloss}{ders}\end{ccgg}</code>,
 which typesets glosses before the top lines are drawn.
 
 Both are based on <code>\cgex{n}{ders}</code>, which is kept for legacy code, where <code>n</code> is the number of columns,
