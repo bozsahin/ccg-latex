@@ -5,7 +5,8 @@
 \newcommand{\cgf}[1]{\mbox{\normalfont\textit{#1}}}     % CG category font
 \newcommand{\cat}{\cgf}                         %alias for cgf. use the one you like.
 \newcommand{\lf}[1]{\ensuremath{\colon #1}}     % lf font and typeset
-\newcommand{\so}[1]{\ensuremath{#1^\prime}}     % primed lf objects
+\newcommand{\so}[1]{\ensuremath{\mbox{\it #1}^\prime}}     % primed lf objects
+                                                       % avoid math kerning
 \newcommand{\fs}{\ensuremath{/}}           % /: in any environment
 \newcommand{\bs}{\ensuremath{\backslash}}  % \: in any environment
 \newcommand{\us}{\ensuremath{\mid}}        % |: non-directional slash
@@ -15,9 +16,6 @@
 {\ensuremath{\fs\makebox[.2em][r]{\raisebox{0ex}{\fs}}}}
 \newcommand{\uds} % up double slash ||
 {\ensuremath{\us\makebox[.2em][r]{\raisebox{0ex}{\us}}}}
-\newcommand{\fss}{\rds} %alias forward slash slash
-\newcommand{\bss}{\lds} %backward slash slash
-\newcommand{\uss}{\uds}
 
 
 % combinators
