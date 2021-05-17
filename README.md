@@ -15,7 +15,7 @@ which typesets glosses before the top lines are drawn.
 Both are based on <code>\cgex{n}{lines}</code>, which is kept for legacy code, where <code>n</code> is the number of columns,
 and <code>lines</code> is the double-backslash-separated lines of at most that many columns.
 
-Basic commands other than above (see the style file for a full list:
+Basic commands other than above (see the style file for a full list):
 
 <code>\cgf{..}</code> typesets the syntactic category.
 
