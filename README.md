@@ -13,7 +13,7 @@ It has a variant, <code>\begin{ccgg}{n}{data}{gloss}{derivs}\end{ccgg}</code>,
 which typesets glosses before the top lines are drawn.
 
 Both are based on <code>\cgex{n}{derivs}</code>, which is kept for legacy code, where <code>n</code> is the number of columns,
-and <code>lines</code> is the double-backslash-separated lines of at most that many columns.
+and <code>derivs</code> is the double-backslash-separated lines of at most that many columns.
 
 <code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
 These are entered by default in {ccg} and {ccgg} environments above.
