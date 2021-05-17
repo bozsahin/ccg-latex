@@ -40,7 +40,7 @@ VP<sub>fin=+,agr=3s</sub> is \cgs{VP}{fin=+,agr=3s}.
 
 <code>\cgss{cat}{feat1}{feat2}</code> typesets category cat subscripting feat1 and superscripting feat2.
 
-For example, NP<sub>acc</sub><sup>e</sup> is \cgss{NP}{acc}{e}. (Actually, it is better than that, because 'e' and 'acc' will be vertically aligned.)
+For example, NP<sub>acc</sub><sup>e</sup> is \cgss{NP}{acc}{e}. (Actually, it is rendered better than markdown, because 'e' and 'acc' will be vertically aligned.)
 
 <code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. 
 
