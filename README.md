@@ -25,8 +25,9 @@ Basic commands other than above (see the style file for a full list:
 
 <code>\fs</code> is the forward slash. We also have <code>\bs, \us, \fss, \bss</code>
 as backslash, undirectional slash, double forward slash and backward, etc.
+
 Use <code>\fs</code> and <code>\bs</code> consistently, rather than '/' for forward slash and say <code>\bs</code> for backslash,
-for consistent rendering of the syntactic types.
+for consistent same-font rendering of the syntactic types.
 
 Some of these slashes have aliases. <code>\fss, \bss, \uss</code> are resp. <code>\rds, \lds, \uds</code>.
 
