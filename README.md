@@ -7,7 +7,7 @@ The example file shows how.
 The basic command is <code>\begin{ccg}{n}{data}{ders}\end{ccg}</code>. 
 
 It typesets
-in n columns data, possibly multilined with <code>\\\</code>, and derivations (ders), each line separated by <code>\\</code>, without glosses. 
+in n columns data, possibly multilined with <code>\\\\</code>, and derivations (ders), each line separated by <code>\\</code>, without glosses. 
 
 It has a variant, <code>\begin{ccgg}{n}{data}{gloss}{ders}\end{ccgg}</code>,
 which typesets glosses before the top lines are drawn.
