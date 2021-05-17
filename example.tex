@@ -4,9 +4,17 @@
 \usepackage{ccg-latex}
 
 \begin{document}
-{\large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\vfill
+{\large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
 
-Examples with the \verb|\cgex{n}{derivations}| command:\vfill
+Include this line somewhere in the latex preamble:\bigskip
+
+\begin{verbatim}
+\usepackage{ccg-latex}
+\end{verbatim}\bigskip
+
+I will show examples with increasingly high-level ccg-latex code.\bigskip
+
+Examples with the \verb|\cgex{n}{derivations}| command:\bigskip
 
 \cgex{3}{John & likes & Mary\\
 \cglines{3}\\
@@ -16,18 +24,62 @@ Examples with the \verb|\cgex{n}{derivations}| command:\vfill
 &\cgres{2}{S\bs NP \lf{\lambda y.\so{like}\so{mary}y}}\\  % note that \cgres is by default in \cgf font
 \cgline{3}{\cgfa}\\
 \cgres{3}{S \lf{\so{like}\so{mary}\so{john}}}
-}\vfill
+}\medskip\bigskip
 
+The ccg-latex code is:
+
+\begin{verbatim}
+\cgex{3}{John & likes & Mary\\
+\cglines{3}\\
+\cgf{S\fs(S\bs NP)} & \cgf{(S\bs\cgs{NP}{3s})\fs NP} 
+  & \cgf{(S\bs NP)\bs((S\bs NP)\fs NP)}\\
+\lf{\lambda p.p\,\so{john}} 
+& \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
+&\cgline{2}{\cgba}\\
+&\cgres{2}{S\bs NP \lf{\lambda y.\so{like}\so{mary}y}}\\  
+% note that \cgres is by default in \cgf font
+\cgline{3}{\cgfa}\\
+\cgres{3}{S \lf{\so{like}\so{mary}\so{john}}}
+}
+\end{verbatim}
+
+\newpage
+Same example with lower-level ccg-latex commands for lexical assumption lines, and with shorthanded 
+type-raising notation:\bigskip
 
 \cgex{3}{John & likes & Mary\\ % uses the alias \cat rather than \cgf above--same result
 \cgul & \cgul & \cgul\\  % manually repeats the columns for comparison with \cglines above 
-\cat{S\fs(S\bs NP)} & \cat{(S\bs\cgs{NP}{3s})\fs NP} & \cat{S\bs(S\fs NP)}\\
-\lf{\lambda p.p\,\so{john}} & \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
+\cat{\cgss{NP}{3s}{\uparrow}} & \cat{(S\bs\cgs{NP}{3s})\fs NP} & \cat{S\bs(S\fs NP)}\\
+\lf{\lambda p.p\,\so{john}} 
+& \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
 \cgline{2}{\cgfc}\\
 \cgres{2}{S\fs NP \lf{\lambda x.\so{like}x\so{john}}}\\  % note that \cgres is by default in \cgf font
 \cgline{3}{\cgfa}\\
 \cgres{3}{\cat{S} \lf{\so{like}\so{mary}\so{john}}} % using \cat inside \cgres is nae problem
-}\vfill
+}\bigskip
+
+The ccg-latex code is:
+
+\begin{verbatim}
+\\cgex{3}{John & likes & Mary\\ 
+% uses the alias \cat rather than \cgf above--same result
+\cgul & \cgul & \cgul\\ 
+ % manually repeats the columns for comparison with \cglines above 
+\cat{\cgss{NP}{3s}{\uparrow}} 
+& \cat{(S\bs\cgs{NP}{3s})\fs NP} & \cat{S\bs(S\fs NP)}\\
+\lf{\lambda p.p\,\so{john}} 
+& \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
+\cgline{2}{\cgfc}\\
+\cgres{2}{S\fs NP \lf{\lambda x.\so{like}x\so{john}}}\\  
+% note that \cgres is by default in \cgf font
+\cgline{3}{\cgfa}\\
+\cgres{3}{\cat{S} \lf{\so{like}\so{mary}\so{john}}} 
+% using \cat inside \cgres is nae problem
+}
+\end{verbatim}
+\newpage
+
+An example with double slashes (for morphology, etc.)\bigskip
 
 \cgex{3}{dismiss& -ed\\
 \cglines{2}\\
@@ -35,7 +87,25 @@ Examples with the \verb|\cgex{n}{derivations}| command:\vfill
 \cgf{((\cgs{S}{}\bs\cgs{NP}{agr})\fs NP)\bss(\cgs{VP}{inf}\fs NP)$:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$}\\
 \cgline{2}{\cgba}\\
 \cgres{2}{\cgf{(\cgs{S}{}\bs\cgs{NP}{agr})\fs\cgs{NP}{}$:\lambda x\lambda y.\so{past}(\so{dismiss}\,x\,y)$}}
-}\vfill
+}\bigskip
+
+ccg-latex code (using \verb|\cgf| instead of \verb|\cat|, which do the same, and native latex math for LF, which does the  same as \verb|\lf{..})|. NB. empty subscripts, if you feel like it, or if you keep changing the categories as I do).
+
+\begin{verbatim}
+\cgex{3}{dismiss& -ed\\
+\cglines{2}\\
+\cgf{\cgs{VP}{inf}\fs\cgs{NP}{}
+$:\lambda x\lambda y.\so{dismiss}\,x\,y$}&
+\cgf{((\cgs{S}{}\bs\cgs{NP}{agr})\fs NP)\bss(\cgs{VP}{inf}\fs NP)
+$:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$}\\
+\cgline{2}{\cgba}\\
+\cgres{2}{\cgf{(\cgs{S}{}\bs\cgs{NP}{agr})\fs\cgs{NP}{}
+$:\lambda x\lambda y.\so{past}(\so{dismiss}\,x\,y)$}}
+}
+\end{verbatim}
+\newpage
+
+Here is one example with features galore, from Emmon Bach:\bigskip
 
 {\footnotesize
 Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
@@ -54,12 +124,36 @@ Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
  \cgres{4}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}\\
  \cgline{6}{\cgfa}\\
  \cgres{6}{\cgs{S}{pres}\bs NP}
-}}\vfill
+}}\bigskip
+
+ccg-latex code:\bigskip
+\begin{verbatim}
+{\footnotesize
+Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
+  \cglines{6}\\
+  \cgf{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{1sg-pl}}
+  & \cgf{\cgs{VP}{1sg-pl}\fs\cgs{VP}{en}}
+   &\cgf{\cgs{VP}{en,ing}\fs\cgs{VP}{ing}}
+   &\cgf{\cgs{VP}{pass,ing}\fs\cgs{VP}{pass}}
+   &\cgf{\cgs{VP}{inf}\fds NP}
+   &\cgf{\cgs{VP}{pass}\lds(\cgs{VP}{inf}\fs NP)}\\
+   \cgline{2}{\cgfc}  &&&\cgline{2}{\cgba}\\
+ \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} 
+ &&&\cgres{2}{\cgs{VP}{pass}}\\
+   \cgline{3}{\cgfc}\\
+ \cgres{3}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}\\
+ \cgline{4}{\cgfc}\\
+ \cgres{4}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}\\
+ \cgline{6}{\cgfa}\\
+ \cgres{6}{\cgs{S}{pres}\bs NP}
+}}
+\end{verbatim}
+
 \newpage
 
-\noindent Example above using \verb|\begin{ccg}{n}{data}{derivations}\end{ccg}|.
-This environment puts in the first lines itself. Based on \verb|\cgex|.
-No gloss line on top.\vfill
+Same example with \verb|\begin{ccg}{n}{data}{derivations}\end{ccg}|.
+
+No gloss line on top, and lexical assumption lines are drawn by default.\bigskip
 
 {\footnotesize
 Mary 
@@ -71,7 +165,8 @@ Mary
    &\cgf{\cgs{VP}{inf}\fds NP}
    &\cgf{\cgs{VP}{pass}\lds(\cgs{VP}{inf}\fs NP)}\\
    \cgline{2}{\cgfc}  &&&\cgline{2}{\cgba}\\
- \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} &&&\cgres{2}{\cgs{VP}{pass}}\\
+ \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} 
+ &&&\cgres{2}{\cgs{VP}{pass}}\\
    \cgline{3}{\cgfc}\\
  \cgres{3}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}\\
  \cgline{4}{\cgfc}\\
@@ -80,13 +175,42 @@ Mary
  \cgres{6}{\cgs{S}{pres}\bs NP}
 }
 \end{ccg}
-}\vfill
+}\bigskip
 
-\noindent Another example, to show glossing in the beginning and the end. 
+ccg-latex code:\bigskip
+
+\begin{verbatim}
+{\footnotesize
+Mary 
+\begin{ccg}{6}{musn't & have & been & being & arrest & -ed} 
+  {
+  \cgf{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{1sg-pl}}
+  & \cgf{\cgs{VP}{1sg-pl}\fs\cgs{VP}{en}}
+   &\cgf{\cgs{VP}{en,ing}\fs\cgs{VP}{ing}}
+   &\cgf{\cgs{VP}{pass,ing}\fs\cgs{VP}{pass}}
+   &\cgf{\cgs{VP}{inf}\fds NP}
+   &\cgf{\cgs{VP}{pass}\lds(\cgs{VP}{inf}\fs NP)}\\
+   \cgline{2}{\cgfc}  &&&\cgline{2}{\cgba}\\
+ \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} 
+ &&&\cgres{2}{\cgs{VP}{pass}}\\
+   \cgline{3}{\cgfc}\\
+ \cgres{3}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}\\
+ \cgline{4}{\cgfc}\\
+ \cgres{4}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}\\
+ \cgline{6}{\cgfa}\\
+ \cgres{6}{\cgs{S}{pres}\bs NP}
+}
+\end{ccg}
+}
+\end{verbatim}
+\newpage
+
+
+\noindent Another example, to show glossing in the beginning. The end gloss is typeset by \verb|\mc|, for multi-column, centered. 
 
 It uses
 \verb|\begin{ccgg}{n}{data}{gloss}{derivations}\end{ccgg}|.
-\vfill
+\bigskip
 
 \begin{ccgg}{3}{ver-dir & -t & -ti.}{give{-caus} & {-caus} & {-past}}
 {
@@ -97,6 +221,26 @@ It uses
 \cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.\so{cause}(\so{cause}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
 \mc{3}{`made to let give', from Turkish}
 }
-\end{ccgg}\vfill
+\end{ccgg}\bigskip
+
+ccg-latex code:\bigskip
+
+\begin{verbatim}
+\begin{ccgg}{3}{ver-dir & -t & -ti.}{give{-caus} & {-caus} & {-past}}
+{
+\cgf{\cgs{VP}{inf}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}
+& \cgf{(S\bs\cgs{NP}{nom}\bs\cgs{NP}{case})\bs\cgs{VP}{inf}}\\
+\lf{\lambda x\lambda y\lambda z.\so{give}yxz} 
+& \lf{\lambda p\lambda x\lambda y.\so{cause}(px)y}\\
+\cgline{2}{\cgbc$^3$}\\ 
+\cgres{2}{S\bs\cgs{NP}{nom}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}
+\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}\\
+\cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.
+\so{cause}(\so{cause}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
+\mc{3}{`made to let give', from Turkish}
+}
+\end{ccgg}
+\end{verbatim}
+
 
 \end{document}
