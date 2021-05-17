@@ -4,15 +4,15 @@ The commands in the <code>ccg-latex.sty</code> file can be used to typeset Combi
 
 The example file shows how.
 
-The basic command is <code>\begin{ccg}{n}{data}{ders}\end{ccg}</code>. 
+The basic command is <code>\begin{ccg}{n}{data}{derivs}\end{ccg}</code>. 
 
-It typesets
-in n columns data, possibly multilined with <code>\\\\</code>, and derivations (ders), each line separated by <code>\\\\</code>, without glosses. 
+It typesets CCG derivations,
+in n columns of data, possibly multilined with <code>\\\\</code>, and derivations (derivs), each line separated by <code>\\\\</code>, without glosses. 
 
-It has a variant, <code>\begin{ccgg}{n}{data}{gloss}{ders}\end{ccgg}</code>,
+It has a variant, <code>\begin{ccgg}{n}{data}{gloss}{derivs}\end{ccgg}</code>,
 which typesets glosses before the top lines are drawn.
 
-Both are based on <code>\cgex{n}{lines}</code>, which is kept for legacy code, where <code>n</code> is the number of columns,
+Both are based on <code>\cgex{n}{derivs}</code>, which is kept for legacy code, where <code>n</code> is the number of columns,
 and <code>lines</code> is the double-backslash-separated lines of at most that many columns.
 
 <code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
