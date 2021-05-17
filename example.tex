@@ -4,7 +4,7 @@
 \usepackage{ccg-latex}
 
 \begin{document}
-{\large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
+{\Large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
 
 Include this line somewhere in the latex preamble:\bigskip
 
@@ -14,7 +14,7 @@ Include this line somewhere in the latex preamble:\bigskip
 
 I will show examples with increasingly high-level ccg-latex code.\bigskip
 
-Examples with the \verb|\cgex{n}{derivations}| command:\bigskip
+Examples with the \verb|\cgex{n}{derivations}| command. The \verb|\lf{}| is already in math mode.\bigskip
 
 \cgex{3}{John & likes & Mary\\
 \cglines{3}\\
@@ -45,7 +45,7 @@ The ccg-latex code is:
 
 \newpage
 Same example with lower-level ccg-latex commands for lexical assumption lines, and with shorthanded 
-type-raising notation:\bigskip
+type-raising notation using subscript and superscript. NB. they are typeset in math mode without needing \verb|$..$|.\bigskip
 
 \cgex{3}{John & likes & Mary\\ % uses the alias \cat rather than \cgf above--same result
 \cgul & \cgul & \cgul\\  % manually repeats the columns for comparison with \cglines above 
@@ -61,7 +61,7 @@ type-raising notation:\bigskip
 The ccg-latex code is:
 
 \begin{verbatim}
-\\cgex{3}{John & likes & Mary\\ 
+\cgex{3}{John & likes & Mary\\ 
 % uses the alias \cat rather than \cgf above--same result
 \cgul & \cgul & \cgul\\ 
  % manually repeats the columns for comparison with \cglines above 
