@@ -4,8 +4,10 @@ The commands in the <code>ccg-latex.sty</code> file can be used to typeset Combi
 
 The example file shows how.
 
-The basic command is <code>\begin{ccg}{n}{data}{ders}\end{ccg}</code>. It typesets
-in n columns data, possibly multilined with \\, and derivations (ders), each line separated by \\., without glosses. 
+The basic command is <code>\begin{ccg}{n}{data}{ders}\end{ccg}</code>. 
+
+It typesets
+in n columns data, possibly multilined with <code>\\</code>, and derivations (ders), each line separated by <code>\\</code>, without glosses. 
 
 It has a variant, <code>\begin{ccgg}{n}{data}{gloss}{ders}\end{ccgg}</code>,
 which typesets glosses before the top lines are drawn.
@@ -51,3 +53,7 @@ These are entered by default in {ccg} and {ccgg} environments above.
 <code>\bxs</code> is a backward slash with crossing modality, i.e. <code>\x</code>. 
 
 Defined for all slashes and modalities.
+
+enjoy.
+
+-cem bozsahin
