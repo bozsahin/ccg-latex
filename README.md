@@ -32,7 +32,9 @@ Some of these slashes have aliases. <code>\fss, \bss, \uss</code> are resp. <cod
 
 <code>\combx</code> typesets the combinator x in bold Curry and Feys notation.
 
-<code>\cgs{cat}{features}</code> typesets category cat subscripting the features. For example NP<sub>acc</sub> is \cgs{NP}{acc}.
+<code>\cgs{cat}{features}</code> typesets category cat subscripting the features. 
+
+For example NP<sub>acc</sub> is \cgs{NP}{acc}.
 VP<sub>fin=+,agr=3s</sub> is \cgs{VP}{fin=+,agr=3s}.
 
 <code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. 
