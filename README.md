@@ -38,6 +38,10 @@ Some of these slashes have aliases. <code>\fss, \bss, \uss</code> are resp. <cod
 For example NP<sub>acc</sub> is \cgs{NP}{acc}.
 VP<sub>fin=+,agr=3s</sub> is \cgs{VP}{fin=+,agr=3s}.
 
+<code>\cgss{cat}{feat1}{feat2}</code> typesets category cat subscripting feat1 and superscripting feat2.
+
+For example, NP<sub>acc</sub><sup>e</sup> is \cgss{NP}{acc}{e}.
+
 <code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. 
 
 Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need not be a pre-defined rule name.
