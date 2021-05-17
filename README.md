@@ -7,7 +7,7 @@ The example file shows how.
 The basic command is <code>\begin{ccg}{n}{data}{ders}\end{ccg}</code>. 
 
 It typesets
-in n columns data, possibly multilined with <code>\\\\</code>, and derivations (ders), each line separated by <code>\\</code>, without glosses. 
+in n columns data, possibly multilined with <code>\\\\</code>, and derivations (ders), each line separated by <code>\\\\</code>, without glosses. 
 
 It has a variant, <code>\begin{ccgg}{n}{data}{gloss}{ders}\end{ccgg}</code>,
 which typesets glosses before the top lines are drawn.
@@ -32,7 +32,7 @@ Some of these slashes have aliases. <code>\fss, \bss, \uss</code> are resp. <cod
 
 <code>\combx</code> typesets the combinator x in bold Curry and Feys notation.
 
-<code>\cgs{..}{..}</code> typesets a subscripted category. For example NP_acc is \cgs{NP}{acc}.
+<code>\cgs{cat}{features}</code> typesets category cat subscripting the features. For example NP<sub>acc</sub> is \cgs{NP}{acc}.
 
 <code>\cgline{n}{rulename}</code> draws a CCG line across n columns, and indexes it with the rule. 
 
