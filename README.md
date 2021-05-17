@@ -15,6 +15,9 @@ which typesets glosses before the top lines are drawn.
 Both are based on <code>\cgex{n}{lines}</code>, which is kept for legacy code, where <code>n</code> is the number of columns,
 and <code>lines</code> is the double-backslash-separated lines of at most that many columns.
 
+<code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
+These are entered by default in {ccg} and {ccgg} environments above.
+
 Basic commands other than above (see the style file for a full list):
 
 <code>\cgf{..}</code> typesets the syntactic category.
@@ -49,8 +52,6 @@ Rule names are <code>\cgfa, \cgba, \cgfc, \cgbc</code> etc. Rulename need not be
 <code>\cgres{n}{..}</code> typesets the CG result in the material .. across n columns. The ... is typeset as \cgf{...}. If there is math mode in it,
 that is typeset in math mode.
 
-<code>\cglines{n}</code> typesets n undecorated lines separated by blanks, which is common practice after lexical assumptions.
-These are entered by default in {ccg} and {ccgg} environments above.
 
 <code>\badline{n}{rulename}</code> typesets a line spanning n columns with <code>***</code> in the middle, with rule name at the end.
 
