@@ -1,13 +1,14 @@
 % commands for drawing CCG derivations
 % neither requires nor loads any package.
-% -cem bozsahin, 2017
+% -cem bozsahin, 2017--2021
 
 \newcommand{\cgf}[1]{\mbox{\normalfont\textit{#1}}}     % CG category font
 \newcommand{\cat}{\cgf}                         %alias for cgf. use the one you like.
-\newcommand{\lf}[1]{\ensuremath{\colon #1}}     % lf font and typeset
+\newcommand{\lf}[1]{\ensuremath{\colon #1}}     % lf typeset with colon by default
+\newcommand{\blf}[1]{\ensuremath{#1}}           % bare lf typeset
+\newcommand{\bm}[1]{\ensuremath{#1}}           % bare math to be typeset without $..$, latex-3 style --optional
 \newcommand{\so}[1]{\ensuremath{\mbox{\it #1}^\prime}}     % primed lf objects
                                                        % avoid math kerning
-\newcommand{\sos}[1]{\ensuremath{\mbox{\scriptsize\it #1}^\prime}}     % subscript version
 \newcommand{\fs}{\ensuremath{/}}           % /: in any environment
 \newcommand{\bs}{\ensuremath{\backslash}}  % \: in any environment
 \newcommand{\us}{\ensuremath{\mid}}        % |: non-directional slash
@@ -20,7 +21,6 @@
 \newcommand{\bss}{\lds} % aliases
 \newcommand{\fss}{\rds}
 \newcommand{\uss}{\uds}
-
 
 % combinators
 \newcommand{\combf}[1]{\ensuremath{\mathbf{#1}}} % combinator font
