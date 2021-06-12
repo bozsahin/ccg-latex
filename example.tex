@@ -4,18 +4,22 @@
 \usepackage{ccg-latex}
 
 \begin{document}
-{\Large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
+\noindent{\Large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
 
-Include this line somewhere in the latex preamble:\bigskip
+\noindent \verb|ccg-latex.sty| neither loads nor requires  packages or fonts. Kerning control for typesetting CCG slashes, LF's colon, and for rule decorations in CCG derivations is in the \verb|pt| unit, without the \verb|\!| command. If you feel like changing it, just look for the \verb|\kern| command. (This is because the eye-pleasing slash distance seems to be independent of font size, at least to my eyes.)
+ All math is introduced by \verb|\ensuremath| in \verb|ccg-latex.sty|; 
+there is no \verb|$..$| unless you introduce it manually.
+
+To use, please include the following line somewhere in the \LaTeX\,preamble:\medskip
 
 \begin{verbatim}
 \usepackage{ccg-latex}
 \end{verbatim}\bigskip
 
-I will show examples with increasingly high-level ccg-latex code, from lowest
+I demonstrate examples with increasingly high-level ccg-latex code, from lowest
 level \verb|\cgex| to \verb|\begin{ccg}| and \verb|\begin{ccgg}|.\bigskip
 
-Examples with the \verb|\cgex{n}{derivations}| command. The \verb|\lf{}| is already in math mode.
+An Example with the \verb|\cgex{n}{derivations}| command. The \verb|\lf{}| is already in math mode.
 Lexical assumption lines are drawn by one command.
 \bigskip
 
@@ -86,24 +90,31 @@ An example with double slashes (for morphology, etc.)\bigskip
 
 \cgex{3}{dismiss& -ed\\
 \cglines{2}\\
-\cgf{\cgs{VP}{inf}\fs\cgs{NP}{}$:\lambda x\lambda y.\so{dismiss}\,x\,y$}&
-\cgf{((\cgs{S}{}\bs\cgs{NP}{agr})\fs NP)\bss(\cgs{VP}{inf}\fs NP)$:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$}\\
+\cgf{\cgs{VP}{inf}\fs\cgs{NP}{}}
+$:\lambda x\lambda y.\so{dismiss}\,x\,y$&
+\cgf{((\cgs{S}{}\bs\cgs{NP}{agr})\fs NP)\bss(\cgs{VP}{inf}\fs NP)}
+$:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$\\
 \cgline{2}{\cgba}\\
-\cgres{2}{\cgf{(\cgs{S}{}\bs\cgs{NP}{agr})\fs\cgs{NP}{}$:\lambda x\lambda y.\so{past}(\so{dismiss}\,x\,y)$}}
-}\bigskip
+\cgres{2}{\cgf{(\cgs{S}{}\bs\cgs{NP}{agr})\fs\cgs{NP}{}}
+\lf{\lambda x\lambda y.\so{past}(\so{dismiss}\,x\,y)}}
+}
+\bigskip
 
-ccg-latex code (using \verb|\cgf| instead of \verb|\cat|, which do the same, and native latex math for LF, which does the  same as \verb|\lf{..})|. NB. empty subscripts, if you feel like it, or if you keep changing the categories as I do).
+The ccg-latex code is below (using \verb|\cgf| instead of \verb|\cat|, which do the same, and native latex math for LF, which does the  same as \verb|\lf{..})|. NB. empty subscripts with no effect, if you keep changing the categories as I do).
+
+The last \verb|\cgres| is a painful reminder that if you put inline math
+in it using \verb|$..$|, you will get a warning from \LaTeX. Use \verb|\lf{..}| or \verb|\bm{..}| (for `bare math') instead.\medskip
 
 \begin{verbatim}
 \cgex{3}{dismiss& -ed\\
 \cglines{2}\\
-\cgf{\cgs{VP}{inf}\fs\cgs{NP}{}
-$:\lambda x\lambda y.\so{dismiss}\,x\,y$}&
-\cgf{((\cgs{S}{}\bs\cgs{NP}{agr})\fs NP)\bss(\cgs{VP}{inf}\fs NP)
-$:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$}\\
+\cgf{\cgs{VP}{inf}\fs\cgs{NP}{}}
+$:\lambda x\lambda y.\so{dismiss}\,x\,y$&
+\cgf{((\cgs{S}{}\bs\cgs{NP}{agr})\fs NP)\bss(\cgs{VP}{inf}\fs NP)}
+$:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$\\
 \cgline{2}{\cgba}\\
-\cgres{2}{\cgf{(\cgs{S}{}\bs\cgs{NP}{agr})\fs\cgs{NP}{}
-$:\lambda x\lambda y.\so{past}(\so{dismiss}\,x\,y)$}}
+\cgres{2}{\cgf{(\cgs{S}{}\bs\cgs{NP}{agr})\fs\cgs{NP}{}}
+\lf{\lambda x\lambda y.\so{past}(\so{dismiss}\,x\,y)}}
 }
 \end{verbatim}
 \newpage
@@ -244,6 +255,106 @@ ccg-latex code:\bigskip
 }
 \end{ccgg}
 \end{verbatim}
+\newpage
+
+An example with slash modalities and centered non-derivability indicator (*):\bigskip
+
+\begin{ccg}{4}{*I~will& give& flowers& my~very~heavy~friends.}
+{
+&\cat{(VP\fs NP)\fds NP}&\cat{VP\bs(VP\fs NP)}&\cat{VP\bs(VP\fs NP)}\\
+&\badline{2}{\cgbx}
+}
+\end{ccg}\bigskip
+
+Code:\bigskip
+
+\begin{verbatim}
+\begin{ccg}{4}{*I~will& give& flowers& my~very~heavy~friends.}
+{
+&\cat{(VP\fs NP)\fds NP}&\cat{VP\bs(VP\fs NP)}&\cat{VP\bs(VP\fs NP)}\\
+&\badline{2}{\cgbx}
+}
+\end{ccg}
+\end{verbatim}
+\newpage
+
+Some examples to show slash distancing by \verb|pt| unit for categories in subscript:\bigskip
+
+John [should]\bm{_{\mbox{\scriptsize\cat{(S\bs NP)\rds IV}}}}  walk the dog.
+
+John [wants]\bm{_{\mbox{\scriptsize\cat{(S\lds NP)\fs VP}}}} to walk the dog.
+
+Mary [believes]\bm{_{\mbox{\scriptsize\cat{(S\bs NP)\fds S}}}} that John walked the dog.\bigskip
+
+And some big ones:\bigskip
+
+{\large
+\cat{(S\bxs NP)\fds IV}\smallskip
+
+\cat{(S\lds NP)\fs VP}\smallskip
+
+\cat{(S\bs NP)\rds S}\smallskip
+}\bigskip
+
+and bigger ones:\bigskip
+
+{\Large
+\cat{(S\bxs NP)\fds IV}\smallskip
+
+\cat{(S\lds NP)\fs VP}\smallskip
+
+\cat{(S\bs NP)\rds S}
+}\bigskip
+
+Here is the native \LaTeX\, math rendering of CCG categories to compare spacing in various sizes:\bigskip
+
+{\Large 
+$(S\backslash_\times NP)/_{\diamond}IV$\medskip
+
+$(S\backslash\backslash NP)/VP$\medskip
+
+$(S\backslash NP)// S$}\bigskip
+
+
+John [should]$_{\scriptstyle (S\backslash NP)//IV}$  walk the dog.
+
+John [wants]$_{\scriptstyle (S\backslash\backslash NP)/ VP}$ to walk the dog.
+
+Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.
+\newpage
+
+Here's the native math code avoiding all \verb|ccg-latex.sty|, which generated
+the typesetting:\footnotesize
+
+\begin{verbatim}
+{\Large 
+$(S\backslash_\times NP)/_{\diamond}IV$\medskip
+
+$(S\backslash\backslash NP)/VP$\medskip
+
+$(S\backslash NP)// S$}\bigskip
+
+
+John [should]$_{\scriptstyle (S\backslash NP)//IV}$  walk the dog.
+
+John [wants]$_{\scriptstyle (S\backslash\backslash NP)/ VP}$ to walk the dog.
+
+Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.
+\end{verbatim}\bigskip\bigskip
+
+{\Large 
+$(S\backslash_\times NP)/_{\diamond}IV$\medskip
+
+$(S\backslash\backslash NP)/VP$\medskip
+
+$(S\backslash NP)// S$}\bigskip
+
+
+John [should]$_{\scriptstyle (S\backslash NP)//IV}$  walk the dog.
+
+John [wants]$_{\scriptstyle (S\backslash\backslash NP)/ VP}$ to walk the dog.
+
+Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.
 
 
 \end{document}
