@@ -6,15 +6,20 @@
 \begin{document}
 \noindent{\Large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
 
-\noindent \verb|ccg-latex.sty| neither loads nor requires  packages or fonts. Kerning control for typesetting CCG slashes, LF's colon, and for rule decorations in CCG derivations is in the \verb|pt| unit, without the \verb|\!| command. If you feel like changing it, just look for the \verb|\kern| command. (This is because the eye-pleasing slash distance seems to be independent of font size, at least to my eyes.)
- All math is introduced by \verb|\ensuremath| in \verb|ccg-latex.sty|; 
-there is no \verb|$..$| unless you introduce it manually.
+\noindent \verb|ccg-latex.sty| neither loads nor requires  packages or fonts. Kerning control for typesetting CCG slashes, LF's colon, and for rule decorations in CCG derivations is in the \verb|pt| unit, without the \verb|\!| command. This is because the eye-pleasing slash distance seems to be independent of font size, at least to my eyes.
 
-To use, please include the following line somewhere in the \LaTeX\,preamble:\medskip
+If you feel like changing it, just look for the \verb|\kern| command. 
+
+All math is introduced by \verb|\ensuremath| in \verb|ccg-latex.sty|; 
+there is no \verb|$..$| unless you introduce it manually. I don't recommend
+using math without \verb|\ensuremath| in \verb|ccg-latex.sty|.
+The short form \verb|\bm{..}|, for `bare math', is for that.
+
+To use this CCG style, please include the following line somewhere in the \LaTeX\,preamble:\medskip
 
 \begin{verbatim}
 \usepackage{ccg-latex}
-\end{verbatim}\bigskip
+\end{verbatim}\medskip
 
 I demonstrate examples with increasingly high-level ccg-latex code, from lowest
 level \verb|\cgex| to \verb|\begin{ccg}| and \verb|\begin{ccgg}|.\bigskip
@@ -103,7 +108,7 @@ $:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$\\
 The ccg-latex code is below (using \verb|\cgf| instead of \verb|\cat|, which do the same, and native latex math for LF, which does the  same as \verb|\lf{..})|. NB. empty subscripts with no effect, if you keep changing the categories as I do).
 
 The last \verb|\cgres| is a painful reminder that if you put inline math
-in it using \verb|$..$|, you will get a warning from \LaTeX. Use \verb|\lf{..}| or \verb|\bm{..}| (for `bare math') instead.\medskip
+in it using \verb|$..$|, you will get a warning from \LaTeX. Use \verb|\lf{..}| or \verb|\bm{..}|  instead.\medskip
 
 \begin{verbatim}
 \cgex{3}{dismiss& -ed\\
@@ -167,7 +172,7 @@ Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
 
 Same example with \verb|\begin{ccg}{n}{data}{derivations}\end{ccg}|.
 
-No gloss line on top, and lexical assumption lines are drawn by default.\bigskip
+No gloss line, and lexical assumption lines are drawn by default.\bigskip
 
 {\footnotesize
 Mary 
@@ -232,7 +237,7 @@ It uses
 & \cgf{(S\bs\cgs{NP}{nom}\bs\cgs{NP}{case})\bs\cgs{VP}{inf}}\\
 \lf{\lambda x\lambda y\lambda z.\so{give}yxz} & \lf{\lambda p\lambda x\lambda y.\so{cause}(px)y}\\
 \cgline{2}{\cgbc$^3$}\\ \cgres{2}{S\bs\cgs{NP}{nom}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}\\
-\cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.\so{cause}(\so{cause}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
+\cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.\so{cause_{1,2}}(\sos{cause}{1,2}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
 \mc{3}{`made to let give', from Turkish}
 }
 \end{ccgg}\bigskip
@@ -247,14 +252,17 @@ ccg-latex code:\bigskip
 \lf{\lambda x\lambda y\lambda z.\so{give}yxz} 
 & \lf{\lambda p\lambda x\lambda y.\so{cause}(px)y}\\
 \cgline{2}{\cgbc$^3$}\\ 
-\cgres{2}{S\bs\cgs{NP}{nom}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}
-\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}\\
+\cgres{2}{S\bs\cgs{NP}{nom}\bs
+  \cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}\\
 \cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.
-\so{cause}(\so{cause}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
+\so{cause_{1,2}}(\sos{cause}{1,2}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
 \mc{3}{`made to let give', from Turkish}
 }
 \end{ccgg}
-\end{verbatim}
+\end{verbatim}\bigskip
+
+Note that subscripted semantic objects such as \so{cause_{1,2}} are better typeset
+as \sos{cause}{1,2} using \verb|\sos| (for `semantic object, subscripted'), rather than \verb|\so|.
 \newpage
 
 An example with slash modalities and centered non-derivability indicator (*):\bigskip
@@ -306,7 +314,7 @@ and bigger ones:\bigskip
 \cat{(S\bs NP)\rds S}
 }\bigskip
 
-Here is the native \LaTeX\, math rendering of CCG categories to compare spacing in various sizes:\bigskip
+Here is the native \LaTeX\, math rendering of CCG categories without \verb|ccg-latex| to compare spacing in various sizes:\bigskip
 
 {\Large 
 $(S\backslash_\times NP)/_{\diamond}IV$\medskip
@@ -323,8 +331,7 @@ John [wants]$_{\scriptstyle (S\backslash\backslash NP)/ VP}$ to walk the dog.
 Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.
 \newpage
 
-Here's the native math code avoiding all \verb|ccg-latex.sty|, which generated
-the typesetting:\footnotesize
+Check the code:\footnotesize
 
 \begin{verbatim}
 {\Large 
@@ -340,7 +347,10 @@ John [should]$_{\scriptstyle (S\backslash NP)//IV}$  walk the dog.
 John [wants]$_{\scriptstyle (S\backslash\backslash NP)/ VP}$ to walk the dog.
 
 Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.
-\end{verbatim}\bigskip\bigskip
+\end{verbatim}\bigskip
+
+
+\normalsize It generates. \bigskip
 
 {\Large 
 $(S\backslash_\times NP)/_{\diamond}IV$\medskip
@@ -354,7 +364,9 @@ John [should]$_{\scriptstyle (S\backslash NP)//IV}$  walk the dog.
 
 John [wants]$_{\scriptstyle (S\backslash\backslash NP)/ VP}$ to walk the dog.
 
-Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.
+Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.\bigskip\bigskip
+
+Not pretty.
 
 
 \end{document}
