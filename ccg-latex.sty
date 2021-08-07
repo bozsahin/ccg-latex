@@ -3,11 +3,11 @@
 % this version avoids \! command by explicitly calling \kern.
 % -cem bozsahin, 2017--2021
 
-\newcommand{\cgf}[1]{\ensuremath{\mathit{#1}}}     % CG category font
+\newcommand{\cgf}[1]{\ensuremath{\mathtt{#1}}}     % CG category font. tt is best spacing for palatino
 \newcommand{\cat}{\cgf}                         %alias for cgf. use the one you like.
 \newcommand{\lf}[1]{\ensuremath{\colon\kern-1pt#1}}     % lf typeset with colon by default
 \newcommand{\blf}[1]{\ensuremath{#1}}           % bare lf typeset
-\newcommand{\bm}[1]{\ensuremath{#1}}           % bare math to be typeset without $..$, latex-3 style --optional
+\newcommand{\bm}[1]{\ensuremath{#1}}           % \bm to avoid non-structural $..$ in bodies
 \newcommand{\so}[1]{\ensuremath{\mathit{#1}^{\prime}}}     % primed lf objects
                                                        % avoid math kerning
 \newcommand{\sos}[2]{\ensuremath{\mathit{#1}_{#2}^{\prime}}}     % primed and subscripted lf object
@@ -125,7 +125,7 @@
  {\mc{#1}{\hrulefill\ensuremath{\raisebox{-1pt}{\tiny #2}}}}% #1=# col #2=rule type 
 \newcommand{\cgul}{\cgline{1}{}}        % used for drawing lines 
 \newcommand{\cgres}[2]                  % CG result #1=#0f columns #2=result
-    {\mc{#1}{\cgf{#2}}}
+    {\mc{#1}{#2}}
 \newcommand{\badline}[2]                % showing bad derivations
  {\mc{#1}{\hrulefill{\scriptsize\raisebox{-.6ex}{*}\,#2}}}      % #1=# of col #2=what fail
 

@@ -6,7 +6,7 @@
 \begin{document}
 \noindent{\Large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
 
-\noindent \verb|ccg-latex.sty| neither loads nor requires  packages or fonts. Kerning control for typesetting CCG slashes, LF's colon, and for rule decorations in CCG derivations is in the \verb|pt| unit, without the \verb|\!| command. This is because the eye-pleasing slash distance seems to be independent of font size, at least to my eyes.
+\noindent The style file \verb|ccg-latex.sty| neither loads nor requires  packages or fonts. Kerning control for typesetting CCG slashes, LF's colon, and for rule decorations in CCG derivations is in the \verb|pt| unit, without the \verb|\!| command. This is because the eye-pleasing slash distance seems to be independent of font size, at least to my eyes.
 
 If you feel like changing it, just look for the \verb|\kern| command. 
 
@@ -33,7 +33,7 @@ Lexical assumption lines are drawn by one command.
 \cgf{S\fs(S\bs NP)} & \cgf{(S\bs\cgs{NP}{3s})\fs NP} & \cgf{(S\bs NP)\bs((S\bs NP)\fs NP)}\\
 \lf{\lambda p.p\,\so{john}} & \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
 &\cgline{2}{\cgba}\\
-&\cgres{2}{S\bs NP \lf{\lambda y.\so{like}\so{mary}y}}\\  % note that \cgres is by default in \cgf font
+&\cgres{2}{S\bs NP \lf{\lambda y.\so{like}\so{mary}y}}\\  
 \cgline{3}{\cgfa}\\
 \cgres{3}{S \lf{\so{like}\so{mary}\so{john}}}
 }\medskip\bigskip
@@ -49,11 +49,43 @@ The ccg-latex code is:
 & \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
 &\cgline{2}{\cgba}\\
 &\cgres{2}{S\bs NP \lf{\lambda y.\so{like}\so{mary}y}}\\  
-% note that \cgres is by default in \cgf font
 \cgline{3}{\cgfa}\\
 \cgres{3}{S \lf{\so{like}\so{mary}\so{john}}}
 }
 \end{verbatim}
+\newpage
+
+You will notice that the result of `likes Mary' was typeset in a different font.
+That's because \verb|\cgres| command typesets its input in default font.
+Use the \verb|\cat| command inside it to avoid that (or \verb|\cgf|):
+
+\cgex{3}{John & likes & Mary\\
+\cglines{3}\\
+\cgf{S\fs(S\bs NP)} & \cgf{(S\bs\cgs{NP}{3s})\fs NP} & \cgf{(S\bs NP)\bs((S\bs NP)\fs NP)}\\
+\lf{\lambda p.p\,\so{john}} & \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
+&\cgline{2}{\cgba}\\
+&\cgres{2}{\cat{S\bs NP}\lf{\lambda y.\so{like}\so{mary}y}}\\  % note that \cgres is by default in \cgf font
+\cgline{3}{\cgfa}\\
+\cgres{3}{\cat{S}\lf{\so{like}\so{mary}\so{john}}}
+}\medskip\bigskip
+
+The ccg-latex code is:
+
+\begin{verbatim}
+\cgex{3}{John & likes & Mary\\
+\cglines{3}\\
+\cgf{S\fs(S\bs NP)} & \cgf{(S\bs\cgs{NP}{3s})\fs NP} 
+  & \cgf{(S\bs NP)\bs((S\bs NP)\fs NP)}\\
+\lf{\lambda p.p\,\so{john}} 
+& \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
+&\cgline{2}{\cgba}\\
+&\cgres{2}{\cat{S\bs NP}\lf{\lambda y.\so{like}\so{mary}y}}\\  
+% note that \cgres is by default in \cgf font
+\cgline{3}{\cgfa}\\
+\cgres{3}{\cat{S}\lf{\so{like}\so{mary}\so{john}}}
+}
+\end{verbatim}
+
 
 \newpage
 Same example with lower-level ccg-latex commands for lexical assumption lines, and with shorthanded 
@@ -65,9 +97,9 @@ type-raising notation using subscript and superscript. NB. they are typeset in m
 \lf{\lambda p.p\,\so{john}} 
 & \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
 \cgline{2}{\cgfc}\\
-\cgres{2}{S\fs NP \lf{\lambda x.\so{like}x\so{john}}}\\  % note that \cgres is by default in \cgf font
+\cgres{2}{\cat{S\fs NP}\lf{\lambda x.\so{like}x\so{john}}}\\  % note that \cgres is by default in \cgf font
 \cgline{3}{\cgfa}\\
-\cgres{3}{\cat{S} \lf{\so{like}\so{mary}\so{john}}} % using \cat inside \cgres is nae problem
+\cgres{3}{\cat{S}\lf{\so{like}\so{mary}\so{john}}} % using \cat inside \cgres is nae problem
 }\bigskip
 
 The ccg-latex code is:
@@ -82,7 +114,7 @@ The ccg-latex code is:
 \lf{\lambda p.p\,\so{john}} 
 & \lf{\lambda x\lambda y.\so{like}xy} & \lf{\lambda p.p\,\so{mary}}\\
 \cgline{2}{\cgfc}\\
-\cgres{2}{S\fs NP \lf{\lambda x.\so{like}x\so{john}}}\\  
+\cgres{2}{\cat{S\fs NP}\lf{\lambda x.\so{like}x\so{john}}}\\  
 % note that \cgres is by default in \cgf font
 \cgline{3}{\cgfa}\\
 \cgres{3}{\cat{S} \lf{\so{like}\so{mary}\so{john}}} 
@@ -136,16 +168,16 @@ Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
    &\cgf{\cgs{VP}{inf}\fds NP}
    &\cgf{\cgs{VP}{pass}\lds(\cgs{VP}{inf}\fs NP)}\\
    \cgline{2}{\cgfc}  &&&\cgline{2}{\cgba}\\
- \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} &&&\cgres{2}{\cgs{VP}{pass}}\\
+ \cgres{2}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}}} &&&\cgres{2}{\cgs{VP}{pass}}\\
    \cgline{3}{\cgfc}\\
- \cgres{3}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}\\
+ \cgres{3}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}}\\
  \cgline{4}{\cgfc}\\
- \cgres{4}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}\\
+ \cgres{4}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}}\\
  \cgline{6}{\cgfa}\\
- \cgres{6}{\cgs{S}{pres}\bs NP}
+ \cgres{6}{\cat{\cgs{S}{pres}\bs NP}}
 }}\bigskip
 
-ccg-latex code:\bigskip
+Here is the ccg-latex code:\bigskip
 \begin{verbatim}
 {\footnotesize
 Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
@@ -157,14 +189,14 @@ Mary \cgex{6}{musn't & have & been & being & arrest & -ed\\
    &\cgf{\cgs{VP}{inf}\fds NP}
    &\cgf{\cgs{VP}{pass}\lds(\cgs{VP}{inf}\fs NP)}\\
    \cgline{2}{\cgfc}  &&&\cgline{2}{\cgba}\\
- \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} 
+ \cgres{2}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}}} 
  &&&\cgres{2}{\cgs{VP}{pass}}\\
    \cgline{3}{\cgfc}\\
- \cgres{3}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}\\
+ \cgres{3}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}}\\
  \cgline{4}{\cgfc}\\
- \cgres{4}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}\\
+ \cgres{4}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}}\\
  \cgline{6}{\cgfa}\\
- \cgres{6}{\cgs{S}{pres}\bs NP}
+ \cgres{6}{\cat{\cgs{S}{pres}\bs NP}}
 }}
 \end{verbatim}
 
@@ -184,40 +216,39 @@ Mary
    &\cgf{\cgs{VP}{inf}\fds NP}
    &\cgf{\cgs{VP}{pass}\lds(\cgs{VP}{inf}\fs NP)}\\
    \cgline{2}{\cgfc}  &&&\cgline{2}{\cgba}\\
- \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} 
+ \cgres{2}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}}} 
  &&&\cgres{2}{\cgs{VP}{pass}}\\
    \cgline{3}{\cgfc}\\
- \cgres{3}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}\\
+ \cgres{3}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}}\\
  \cgline{4}{\cgfc}\\
- \cgres{4}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}\\
+ \cgres{4}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}}\\
  \cgline{6}{\cgfa}\\
- \cgres{6}{\cgs{S}{pres}\bs NP}
+ \cgres{6}{\cat{\cgs{S}{pres}\bs NP}}
 }
 \end{ccg}
 }\bigskip
 
-ccg-latex code:\bigskip
+Here is the ccg-latex code:\bigskip
 
 \begin{verbatim}
 {\footnotesize
 Mary 
 \begin{ccg}{6}{musn't & have & been & being & arrest & -ed} 
-  {
-  \cgf{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{1sg-pl}}
+  {\cgf{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{1sg-pl}}
   & \cgf{\cgs{VP}{1sg-pl}\fs\cgs{VP}{en}}
    &\cgf{\cgs{VP}{en,ing}\fs\cgs{VP}{ing}}
    &\cgf{\cgs{VP}{pass,ing}\fs\cgs{VP}{pass}}
    &\cgf{\cgs{VP}{inf}\fds NP}
    &\cgf{\cgs{VP}{pass}\lds(\cgs{VP}{inf}\fs NP)}\\
    \cgline{2}{\cgfc}  &&&\cgline{2}{\cgba}\\
- \cgres{2}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}} 
+ \cgres{2}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{en}}} 
  &&&\cgres{2}{\cgs{VP}{pass}}\\
    \cgline{3}{\cgfc}\\
- \cgres{3}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}\\
+ \cgres{3}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{ing}}}\\
  \cgline{4}{\cgfc}\\
- \cgres{4}{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}\\
+ \cgres{4}{\cat{(\cgs{S}{pres}\bs NP)\fs\cgs{VP}{pass}}}\\
  \cgline{6}{\cgfa}\\
- \cgres{6}{\cgs{S}{pres}\bs NP}
+ \cgres{6}{\cat{\cgs{S}{pres}\bs NP}}
 }
 \end{ccg}
 }
@@ -236,13 +267,13 @@ It uses
 \cgf{\cgs{VP}{inf}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}
 & \cgf{(S\bs\cgs{NP}{nom}\bs\cgs{NP}{case})\bs\cgs{VP}{inf}}\\
 \lf{\lambda x\lambda y\lambda z.\so{give}yxz} & \lf{\lambda p\lambda x\lambda y.\so{cause}(px)y}\\
-\cgline{2}{\cgbc$^3$}\\ \cgres{2}{S\bs\cgs{NP}{nom}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}\\
+\cgline{2}{\cgbc$^3$}\\ \cgres{2}{\cat{S\bs\cgs{NP}{nom}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}}\\
 \cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.\so{cause_{1,2}}(\sos{cause}{1,2}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
 \mc{3}{`made to let give', from Turkish}
 }
 \end{ccgg}\bigskip
 
-ccg-latex code:\bigskip
+Here is the ccg-latex code:\bigskip
 
 \begin{verbatim}
 \begin{ccgg}{3}{ver-dir & -t & -ti.}{give{-caus} & {-caus} & {-past}}
@@ -252,10 +283,11 @@ ccg-latex code:\bigskip
 \lf{\lambda x\lambda y\lambda z.\so{give}yxz} 
 & \lf{\lambda p\lambda x\lambda y.\so{cause}(px)y}\\
 \cgline{2}{\cgbc$^3$}\\ 
-\cgres{2}{S\bs\cgs{NP}{nom}\bs
-  \cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}\\
+\cgres{2}{\cat{S\bs\cgs{NP}{nom}\bs\cgs{NP}{dat}\bs
+\cgs{NP}{dat}\bs\cgs{NP}{dat}\bs\cgs{NP}{acc}}}\\
 \cgres{2}{\lf{\lambda x_1\lambda x_2\lambda x_3\lambda x_4\lambda x_5.
-\so{cause_{1,2}}(\sos{cause}{1,2}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
+\so{cause_{1,2}}
+(\sos{cause}{1,2}(\so{give}x_1x_2x_3)x_4)x_5}}\\[1ex]
 \mc{3}{`made to let give', from Turkish}
 }
 \end{ccgg}
@@ -286,7 +318,9 @@ Code:\bigskip
 \end{verbatim}
 \newpage
 
-Some examples to show slash distancing by \verb|pt| unit for categories in subscript:\bigskip
+Some examples to show slash distancing by \verb|pt| unit for categories in subscript:\medskip
+
+By ccg-latex:\bigskip
 
 John [should]\bm{_{\mbox{\scriptsize\cat{(S\bs NP)\rds IV}}}}  walk the dog.
 
@@ -294,7 +328,7 @@ John [wants]\bm{_{\mbox{\scriptsize\cat{(S\lds NP)\fs VP}}}} to walk the dog.
 
 Mary [believes]\bm{_{\mbox{\scriptsize\cat{(S\bs NP)\fds S}}}} that John walked the dog.\bigskip
 
-And some big ones:\bigskip
+And some big ones by ccg-latex:\bigskip
 
 {\large
 \cat{(S\bxs NP)\fds IV}\smallskip
@@ -314,7 +348,7 @@ and bigger ones:\bigskip
 \cat{(S\bs NP)\rds S}
 }\bigskip
 
-Here is the native \LaTeX\, math rendering of CCG categories without \verb|ccg-latex| to compare spacing in various sizes:\bigskip
+Here is the native \LaTeX\, math rendering of above without \verb|ccg-latex| to compare spacing in various sizes:\bigskip
 
 {\Large 
 $(S\backslash_\times NP)/_{\diamond}IV$\medskip
