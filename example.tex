@@ -13,7 +13,7 @@ If you feel like changing it, just look for the \verb|\kern| command.
 All math is introduced by \verb|\ensuremath| in \verb|ccg-latex.sty|; 
 there is no \verb|$..$| unless you introduce it manually. I don't recommend
 using math without \verb|\ensuremath| in \verb|ccg-latex.sty|.
-The short form \verb|\bm{..}|, for `bare math', is for that.
+The short form \verb|\mymath{..}|, for `bare math', is for that.
 
 To use this CCG style, please include the following line somewhere in the \LaTeX\,preamble:\medskip
 
@@ -140,7 +140,7 @@ $:\lambda p\lambda x\lambda y.\so{past}(P\,xy)$\\
 The ccg-latex code is below (using \verb|\cgf| instead of \verb|\cat|, which do the same, and native latex math for LF, which does the  same as \verb|\lf{..})|. NB. empty subscripts with no effect, if you keep changing the categories as I do).
 
 The last \verb|\cgres| is a painful reminder that if you put inline math
-in it using \verb|$..$|, you will get a warning from \LaTeX. Use \verb|\lf{..}| or \verb|\bm{..}|  instead.\medskip
+in it using \verb|$..$|, you will get a warning from \LaTeX. Use \verb|\lf{..}| or \verb|\mymath{..}|  instead.\medskip
 
 \begin{verbatim}
 \cgex{3}{dismiss& -ed\\
@@ -322,11 +322,11 @@ Some examples to show slash distancing by \verb|pt| unit for categories in subsc
 
 By ccg-latex:\bigskip
 
-John [should]\bm{_{\mbox{\scriptsize\cat{(S\bs NP)\rds IV}}}}  walk the dog.
+John [should]\mymath{_{\mbox{\scriptsize\cat{(S\bs NP)\rds IV}}}}  walk the dog.
 
-John [wants]\bm{_{\mbox{\scriptsize\cat{(S\lds NP)\fs VP}}}} to walk the dog.
+John [wants]\mymath{_{\mbox{\scriptsize\cat{(S\lds NP)\fs VP}}}} to walk the dog.
 
-Mary [believes]\bm{_{\mbox{\scriptsize\cat{(S\bs NP)\fds S}}}} that John walked the dog.\bigskip
+Mary [believes]\mymath{_{\mbox{\scriptsize\cat{(S\bs NP)\fds S}}}} that John walked the dog.\bigskip
 
 And some big ones by ccg-latex:\bigskip
 
