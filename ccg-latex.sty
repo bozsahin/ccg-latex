@@ -116,13 +116,8 @@
 % use this if there are multiple columns, or \cgul if there is only one
 \newcommand{\cglines}[1]{
 	\setcounter{cgcols}{#1}
-	\xwhilenum{\value{cgcols}>1 }
-	{
-		\addtocounter{cgcols}{-1}
-		\hrulefill
-		&
-	}
-	\hrulefill
+	\xwhilenum{\value{cgcols}>1}
+	{\addtocounter{cgcols}{-1}\hrulefill&}\hrulefill
 }
 	
 \newcommand{\cgline}[2]                 % writing a CG line. 2 arguments
