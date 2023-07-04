@@ -6,7 +6,14 @@
 \begin{document}
 \noindent{\Large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
 
-\noindent The style file \verb|ccg-latex.sty| neither loads nor requires  packages or fonts. Kerning control for typesetting CCG slashes, LF's colon, and for rule decorations in CCG derivations is in the \verb|pt| unit, without the \verb|\!| command. This is because the eye-pleasing slash distance seems to be independent of font size, at least to my eyes.
+To use this CCG style, please include the following line somewhere in the \LaTeX\,preamble:\medskip
+
+\begin{verbatim}
+\usepackage{ccg-latex}
+\end{verbatim}\medskip
+
+
+The style file \verb|ccg-latex.sty| neither loads nor requires  packages or fonts. Kerning controls for typesetting the CCG slashes, the  LF's colon, and rule decorations in CCG derivations are in the \verb|pt| unit, without the \verb|\!| command. This is because the eye-pleasing slash distance seems to be independent of font size, at least to my eyes.
 
 If you feel like changing it, just look for the \verb|\kern| command. 
 
@@ -15,13 +22,8 @@ there is no \verb|$..$| unless you introduce it manually. I don't recommend
 using math without \verb|\ensuremath| in \verb|ccg-latex.sty|.
 The short form \verb|\mymath{..}|, for `bare math', is for that.
 
-To use this CCG style, please include the following line somewhere in the \LaTeX\,preamble:\medskip
 
-\begin{verbatim}
-\usepackage{ccg-latex}
-\end{verbatim}\medskip
-
-I demonstrate examples with increasingly high-level ccg-latex code, from lowest
+I demonstrate examples with increasingly high-level \verb|ccg-latex| code, from lowest
 level \verb|\cgex| to \verb|\begin{ccg}| and \verb|\begin{ccgg}|.\bigskip
 
 An Example with the \verb|\cgex{n}{derivations}| command. The \verb|\lf{}| is already in math mode.
@@ -121,7 +123,23 @@ The ccg-latex code is:
 % using \cat inside \cgres is nae problem
 }
 \end{verbatim}
+
+Although the top line produced by \verb|\cgex| command seems like it is meant for lexical assumptions only, because of its font, you can override that for example using the \verb|\cat| command:
+
+\cgex{2}{\cat{X\fs Y} & ~~~\cat{Y}\\
+\cgline{2}{\cgfa}\\
+\cgres{2}{\cat{X}}
+}\medskip
+
+Here is the \verb|ccg-latex| code for it:
+\begin{verbatim}
+\cgex{2}{\cat{X\fs Y} & ~~~\cat{Y}\\
+\cgline{2}{\cgfa}\\
+\cgres{2}{\cat{X}}
+}
+\end{verbatim}
 \newpage
+
 
 An example with double slashes (for morphology, etc.)\bigskip
 
@@ -297,7 +315,7 @@ Note that subscripted semantic objects such as \so{cause_{1,2}} are better types
 as \sos{cause}{1,2} using \verb|\sos| (for `semantic object, subscripted'), rather than \verb|\so|.
 \newpage
 
-An example with slash modalities and centered non-derivability indicator (*):\bigskip
+An example with slash modalities and the non-derivability indicator (*):\bigskip
 
 \begin{ccg}{4}{*I~will& give& flowers& my~very~heavy~friends.}
 {
@@ -320,7 +338,7 @@ Code:\bigskip
 
 Some examples to show slash distancing by \verb|pt| unit for categories in subscript:\medskip
 
-By ccg-latex:\bigskip
+If you use \verb|ccg-latex| for category name spacing you will get:\bigskip
 
 John [should]\mymath{_{\mbox{\scriptsize\cat{(S\bs NP)\rds IV}}}}  walk the dog.
 
@@ -401,6 +419,5 @@ John [wants]$_{\scriptstyle (S\backslash\backslash NP)/ VP}$ to walk the dog.
 Mary [believes]$_{\scriptstyle (S\backslash NP)/_{\diamond}S}$ that John walked the dog.\bigskip\bigskip
 
 Not pretty.
-
 
 \end{document}

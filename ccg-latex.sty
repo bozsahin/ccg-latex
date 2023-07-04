@@ -14,8 +14,8 @@
 \newcommand{\fs}{\ensuremath{\kern-1pt /\kern-1pt}}           % /: in any environment
 \newcommand{\bs}{\ensuremath{\kern-.3pt \backslash\kern-.2pt}}  % \: in any environment
 \newcommand{\us}{\ensuremath{\kern-2pt \mid\kern-2pt}}        % |: non-directional slash
-\newcommand{\lds}{\ensuremath{\bs\kern-2pt\bs}} % double slashes, left, right, up
-\newcommand{\rds}{\ensuremath{\fs\fs\,}}
+\newcommand{\lds}{\ensuremath{\bs\kern-2.5pt\bs}} % double slashes, left, right, up
+\newcommand{\rds}{\ensuremath{\fs\kern-1pt\fs\,}}
 \newcommand{\uds}{\ensuremath{\us\kern-1pt\us}}
 \newcommand{\bss}{\lds} % aliases
 \newcommand{\fss}{\rds}
@@ -95,6 +95,10 @@
 % CCG derivation lines
 \newcommand{\mc}[2]                     % centered multicolumn, 
   {\multicolumn{#1}{c}{#2}}             % #1 = no. of columns, #2 = body.
+\newcommand{\ml}[2]                     % centered multicolumn, 
+  {\multicolumn{#1}{l}{#2}}
+\newcommand{\mr}[2]       
+  {\multicolumn{#1}{r}{#2}}
 \newcommand{\cgex}[2]                        % CCG derivations, \cgex{}{} 
   {\renewcommand{\arraystretch}{0.5}
   \begin{tabular}[t]{@{}*{#1}{c@{\ }}}       % #1 = no. of columns, #2 = body
