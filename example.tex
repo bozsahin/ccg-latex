@@ -6,7 +6,8 @@
 \begin{document}
 \noindent{\Large\bf Using the \verb|ccg-latex.sty| file}\hfill{\small Cem Boz\c{s}ahin}\hfill\today\medskip\bigskip
 
-\noindent To use this CCG style, please include the following line somewhere in the \LaTeX\,preamble:\medskip
+\noindent This is a \LaTeX 3e package for laying out CCG grammar derivations.
+To use this CCG style, please include the following line somewhere in the \LaTeX\,preamble:\medskip
 
 \begin{verbatim}
 \usepackage{ccg-latex}
@@ -40,7 +41,7 @@ Lexical assumption lines are drawn by one command.
 \cgres{3}{S \lf{\so{like}\so{mary}\so{john}}}
 }\medskip\bigskip
 
-The ccg-latex code is:
+The \verb|ccg-latex| code is:
 
 \begin{verbatim}
 \cgex{3}{John & likes & Mary\\
@@ -71,7 +72,7 @@ Use the \verb|\cat| command inside it to avoid that (or \verb|\cgf|):
 \cgres{3}{\cat{S}\lf{\so{like}\so{mary}\so{john}}}
 }\medskip\bigskip
 
-The ccg-latex code is:
+The \verb|ccg-latex| code is:
 
 \begin{verbatim}
 \cgex{3}{John & likes & Mary\\
@@ -88,9 +89,29 @@ The ccg-latex code is:
 }
 \end{verbatim}
 
+Checking line layouts in short material:
+\cgex{3}{I & like & Mo\\
+\cglines{3}\\
+\cgf{NP} & \cgf{(S\bs\cgs{NP}{3s})\fs NP} & \cgf{NP}\\
+&\cgline{2}{\cgfa}\\
+&\cgres{2}{\cat{S\bs NP}}\\  % note that \cgres is by default in \cgf font
+\cgline{3}{\cgba}\\
+\cgres{3}{\cat{S}}
+}
+
+The code is: \begin{verbatim}
+\cgex{3}{I & like & Mo\\
+\cglines{3}\\
+\cgf{NP} & \cgf{(S\bs\cgs{NP}{3s})\fs NP} & \cgf{NP}\\
+&\cgline{2}{\cgfa}\\
+&\cgres{2}{\cat{S\bs NP}}\\  % note that \cgres is by default in \cgf font
+\cgline{3}{\cgba}\\
+\cgres{3}{\cat{S}}
+}
+\end{verbatim}
 
 \newpage
-Same example with lower-level ccg-latex commands for lexical assumption lines, and with shorthanded 
+An example of using lower-level \verb|ccg-latex| commands for lexical assumption lines, and with shorthanded 
 type-raising notation using subscript and superscript. NB. they are typeset in math mode without needing \verb|$..$|.\bigskip
 
 \cgex{3}{John & likes & Mary\\ % uses the alias \cat rather than \cgf above--same result
@@ -126,7 +147,7 @@ The ccg-latex code is:
 
 Although the top line produced by \verb|\cgex| command seems like it is meant for lexical assumptions only, because of its font, you can override that for example using the \verb|\cat| command:
 
-\cgex{2}{\cat{X\fs Y} & ~~~\cat{Y}\\
+\cgex{2}{\cat{X\fs Y} & ~~\cat{Y}\\
 \cgline{2}{\cgfa}\\
 \cgres{2}{\cat{X}}
 }\medskip

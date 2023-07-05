@@ -3,7 +3,7 @@
 % this version avoids \! command by explicitly calling \kern.
 % -cem bozsahin, 2017--2021
 
-\newcommand{\cgf}[1]{\ensuremath{\mathtt{#1}}}     % CG category font. tt is best spacing for palatino
+\newcommand{\cgf}[1]{\ensuremath{\mathtt{#1}}}     % CG category font. tt seems best in dimmed highlight + spacing
 \newcommand{\cat}{\cgf}                         %alias for cgf. use the one you like.
 \newcommand{\lf}[1]{\ensuremath{\colon\kern-1pt#1}}     % lf typeset with colon by default
 \newcommand{\blf}[1]{\ensuremath{#1}}           % bare lf typeset
@@ -24,19 +24,19 @@
 % combinators
 \newcommand{\combf}[1]{\ensuremath{\mathbf{#1}}} % combinator font
 \newcommand{\combb}{\ensuremath{\combf{B}}}      % Combinator B in any environment
-\newcommand{\combi}{\ensuremath{\combf{I}}}      % Combinator I
-\newcommand{\combk}{\ensuremath{\combf{K}}}      % Combinator K
-\newcommand{\combc}{\ensuremath{\combf{C}}}      % Combinator C
-\newcommand{\combs}{\ensuremath{\combf{S}}}      % Combinator S 
-\newcommand{\combw}{\ensuremath{\combf{W}}}      % Combinator W
-\newcommand{\combd}{\ensuremath{\combf{D}}}      % Combinator D
-\newcommand{\combo}{\ensuremath{\combf{O}}}      % Combinator O
-\newcommand{\combu}{\ensuremath{\combf{U}}}      % Combinator U
-\newcommand{\comba}{\ensuremath{\combf{A}}}      % Combinator A (actually, not a comb)
-\newcommand{\combt}{\ensuremath{\combf{T}}}      % Combinator T (=C*)
-\newcommand{\combcs}{\ensuremath{\combf{C_\star}}}      % Combinator C*
-\newcommand{\combphi}{\ensuremath{\combf{\Phi}}}      % cOMBInator Phi
-\newcommand{\combpsi}{\ensuremath{\combf{\Psi}}}      % Combinator Psi
+\newcommand{\combi}{\ensuremath{\combf{I}}}      % I
+\newcommand{\combk}{\ensuremath{\combf{K}}}      % K
+\newcommand{\combc}{\ensuremath{\combf{C}}}      % C
+\newcommand{\combs}{\ensuremath{\combf{S}}}      % S 
+\newcommand{\combw}{\ensuremath{\combf{W}}}      % W
+\newcommand{\combd}{\ensuremath{\combf{D}}}      % D
+\newcommand{\combo}{\ensuremath{\combf{O}}}      % O
+\newcommand{\combu}{\ensuremath{\combf{U}}}      % U
+\newcommand{\comba}{\ensuremath{\combf{A}}}      % A (actually, not a comb)
+\newcommand{\combt}{\ensuremath{\combf{T}}}      % T (=C*)
+\newcommand{\combcs}{\ensuremath{\combf{C_\star}}}    % C*
+\newcommand{\combphi}{\ensuremath{\combf{\Phi}}}      % Phi
+\newcommand{\combpsi}{\ensuremath{\combf{\Psi}}}      % Psi
 \newcommand{\combz}{\ensuremath{\combf{Z}}}
 \newcommand{\combj}{\ensuremath{\combf{J}}}
 \newcommand{\combl}{\ensuremath{\combf{L}}}  % the lost combinator fz(gw)=B^2CBB.
@@ -114,11 +114,7 @@
 % nice column repeat, cannibalised from jfbu in stackexchange
 % this is one way to avoid one continuous line of \cline
 % use this if there are multiple columns, or \cgul if there is only one
-\newcommand{\cglines}[1]{
-	\setcounter{cgcols}{#1}
-	\xwhilenum{\value{cgcols}>1}
-	{\addtocounter{cgcols}{-1}\hrulefill&}\hrulefill
-}
+\newcommand{\cglines}[1]{\setcounter{cgcols}{#1}\xwhilenum{\value{cgcols}>1}{\addtocounter{cgcols}{-1}\hrulefill&}\hrulefill}
 	
 \newcommand{\cgline}[2]                 % writing a CG line. 2 arguments
  {\mc{#1}{\hrulefill\ensuremath{\raisebox{-1pt}{\tiny #2}}}}% #1=# col #2=rule type 
@@ -151,18 +147,7 @@
 % environments
 
 \newenvironment{ccgg}[4]{% glossed ccg examples as an environment, 1: columns 2:data 3: gloss 4: derivations
-	\cgex{#1}{
-		#2\\
-		#3\\
-		\cglines{#1}\\
-		#4
-		}
-}{}
+	\cgex{#1}{#2\\ #3\\ \cglines{#1}\\ #4}}{}
 
 \newenvironment{ccg}[3]{% ccg examples as an environment, 1: columns 2:data 3: derivations
-	\cgex{#1}{
-		#2\\
-		\cglines{#1}\\
-		#3
-		}
-}{}
+	\cgex{#1}{#2\\ \cglines{#1}\\ #3}}{}
